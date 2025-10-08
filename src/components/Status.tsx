@@ -7,14 +7,15 @@ type StatusProps = {
 };
 
 export const Status: React.FC<StatusProps> = ({ winner, nextPlayer, squares }) => {
-  let status;
-  if (winner) {
-    status = `Winner: ${winner}`;
-  } else if (squares.every(Boolean)) {
-    status = "Draw! No winner.";
-  } else {
-    status = `Next player: ${nextPlayer}`;
-  }
+    let status;
+    if (winner) {
+        status = `Winner: ${winner}`;
+    } else if (squares.every(Boolean)) {
+        status = "Draw! No winner.";
+    } else {
+        status = `Next player: ${nextPlayer}`;
+    }
 
-  return <div className="mt-4 text-lg font-semibold">{status}</div>;
+    return <div className="status">{status}</div>;
 };
+

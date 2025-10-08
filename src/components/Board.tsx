@@ -8,20 +8,25 @@ type BoardProps = {
 };
 
 export const Board: React.FC<BoardProps> = ({ squares, onClick, winningLine }) => {
-  function renderSquare(i: number) {
-    const isWinning = winningLine?.includes(i) ?? false;
-    return (
-      <Square key={i} value={squares[i]} onClick={() => onClick(i)} highlight={isWinning} />
-    );
-  }
+    function renderSquare(i: number) {
+        const isWinning = winningLine?.includes(i) ?? false;
+        return (
+            <Square
+                key={i}
+                value={squares[i]}
+                onClick={() => onClick(i)}
+                highlight={isWinning}
+            />
+        );
+    }
 
-  return (
-    <div>
-      {[0, 1, 2].map((row) => (
-        <div key={row} className="flex">
-          {[0, 1, 2].map((col) => renderSquare(row * 3 + col))}
+    return (
+        <div className="board">
+            {[0, 1, 2].map((row) => (
+                <div key={row} className="board-row">
+                    {[0, 1, 2].map((col) => renderSquare(row * 3 + col))}
+                </div>
+            ))}
         </div>
-      ))}
-    </div>
-  );
+    );
 };
